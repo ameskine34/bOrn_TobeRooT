@@ -54,12 +54,9 @@ Container virtualization is a lightweight form of virtualization that allows app
 1. **Virtual machine :**
 
 Unlike traditional virtual machines (VMs), which emulate entire operating systems.
-
-![Screenshot from 2024-12-22 18-45-21.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/bd9ea913-5b7f-4ac0-865b-ec6f16aa6218/Screenshot_from_2024-12-22_18-45-21.png)
-
  
 
-![Screenshot from 2024-12-22 18-53-52.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/609bb851-b59e-4ea4-a7e5-1bef18f961c6/Screenshot_from_2024-12-22_18-53-52.png)
+![image]()
 
 docker is a container (instead of taking the hole operating system) so you take only the package that will contain docker image and when we run the image the container is on. and work with **docker engine**
 
@@ -177,7 +174,3 @@ When you install a web browser like Firefox, it might need:
 - Audio libraries to play sound
 
 Dependency resolution: Process of figuring out and managing all the additional software packages needed for a program to work.
-
-[**Linux Boot Process:**](https://www.notion.so/Linux-Boot-Process-16a33f095579803e8b5ceb48b57b5e7a?pvs=21)
-
-[root / user / sudo:](https://www.notion.so/root-user-sudo-16a33f095579804b8403f14ec576f63a?pvs=21)
