@@ -56,7 +56,7 @@ Container virtualization is a lightweight form of virtualization that allows app
 Unlike traditional virtual machines (VMs), which emulate entire operating systems.
  
 
-![Screenshot](image/Screenshot%202024-12-22%2018-45-21.png)
+![Screenshot](image/Screenshot%20from2024-12-22%2018-45-21.png)
 
 docker is a container (instead of taking the hole operating system) so you take only the package that will contain docker image and when we run the image the container is on. and work with **docker engine**
 
