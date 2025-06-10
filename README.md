@@ -144,9 +144,21 @@ benefits ::::
 
 ![Screenshot](image/Screenshot%20from%202024-12-25%2015-44-55.png)
 
----
+# added infos about LVM:
 
-[added infos about LVM:](https://www.notion.so/added-infos-about-LVM-16733f09557980b4bb59c39de86c3072?pvs=21)
+To display information about volume groups such as `rootvg` and `datavg`
+
+commands to displays infos 
+
+ lsvg rootvg  /   lsvg datavg
+
+To display information about physical volumes:
+
+ lsvg -p rootvg  /   lsvg -p datavg
+
+To display information about logical volumes:
+
+ lsvg -l rootvg  /   lsvg -l datavg
 
 [catch up infos:](https://www.notion.so/catch-up-infos-16833f095579808c9515e24fec726735?pvs=21)
 
