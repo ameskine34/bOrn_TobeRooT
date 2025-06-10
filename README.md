@@ -77,7 +77,7 @@ docker is a container (instead of taking the hole operating system) so you take 
 - Type 1 hypervisors are more complicated to deploy and manage than Type 2.
 - Some hypervisors require hardware components from an approved hardware compatibility list.
 
-![Screenshot](Screenshot%20from%202024-12-25%2012-18-33.png)
+![Screenshot](image/Screenshot%20from%202024-12-25%2012-18-33.png)
 
 **Type 2 Hypervisor: Advantages and Disadvantages :**
 
