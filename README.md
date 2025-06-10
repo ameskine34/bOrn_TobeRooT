@@ -142,8 +142,6 @@ benefits ::::
 
 ![Screenshot](image/Screenshot%20from%202024-12-25%2015-47-52.png)
 
-![Screenshot](image/Screenshot%20from%202024-12-25%2015-44-55.png)
-
 # added infos about LVM:
 
 To display information about volume groups such as `rootvg` and `datavg`
@@ -159,8 +157,6 @@ To display information about physical volumes:
 To display information about logical volumes:
 
  lsvg -l rootvg  /   lsvg -l datavg
-
-[catch up infos:](https://www.notion.so/catch-up-infos-16833f095579808c9515e24fec726735?pvs=21)
 
 what is apt(advanced package tool) package : 
 
