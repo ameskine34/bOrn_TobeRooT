@@ -180,3 +180,202 @@ When you install a web browser like Firefox, it might need:
 - Audio libraries to play sound
 
 Dependency resolution: Process of figuring out and managing all the additional software packages needed for a program to work.
+
+# mount point for the partition :
+
+**mount point** refers to the location within the directory hierarchy where the contents of a partition are made accessible.
+
+1///The `/boot` directory in a Linux system contains the essential files required to boot the operating system.
+
+**Bootloader Files / Linux Kernel ….**
+
+2/// A /swap file is a special file on a storage device that serves as an extension of a system’s physical RAM (Random Access Memory).
+
+3/// The **`/var` directory** in a Linux system is a part of the standard directory structure defined by the **Filesystem Hierarchy Standard (FHS)**. It is short for **"variable"** and is used to store files that are expected to change frequently during the normal operation of the system. These include logs, spool files, caches, and other dynamic content.
+
+4/// . The name **`/srv`** stands for **"service"** and is designed to hold files served by the system, such as web content, FTP data, or other service-specific resources. Stores web content, such as HTML, CSS, images, Hosts repositories for services like Git.
+
+5/// . temporary directory is typically named **`/tmp`**, which is part of the **Filesystem Hierarchy Standard (FHS)**. Files in `/tmp` are typically **deleted at system reboot** to free up space and prevent clutter(desordre).
+
+6/// . In summary, **`/var/log`** is a directory dedicated to storing logs for system and application activity, helping administrators monitor and troubleshoot their Linux systems effectively. Proper management of `/var/log` ensures system stability and security. 
+
+The /home directory in Unix-like operating systems (including Linux) is a crucial directory that contains user-specific data and settings.
+
+:::: Personal Files/Default Permissions/Configuration Files.
+
+7/// The mount point for the /home partition is simply "/home" in Linux/Unix systems. This is where user home directories are stored by default. Each user typically gets their own subdirectory within /home, like /home/username.
+
+### **Purpose of `/var/log`**
+
+1. **Centralized Logging**: Acts as a centralized location for storing logs from the kernel, applications, and various services.
+2. **System Monitoring**: Helps system administrators track and analyze system activity.
+3. **Troubleshooting**: Useful for diagnosing issues by examining error messages or unusual events.
+4. **Audit Trail**: Logs can serve as an audit trail to track security incidents or user actions.
+
+# set up process :
+
+enter to root and install the sudo (#superuser do ) that gives some privilege  as the root have i did install sudo using (#apt install sudo ) to remove it (#apt remove sudo) to check for any program if it is installed (#sudo - -version)
+
+first you have to go to root and add the user to the group sudo using (usermod -aG sudo ameskine) and after i check it if successfully was added with ** getent group sudo .
+
+to add a user to a sudo group (#usermod -aG sudo ameskine)
+
+to remove a user from a sudo group (#sudo deluser username sudo)
+
+to check is the user is added successfully to the sudo group tow ways :
+
+#cat  /etc/group  &&  #grep sudo /etc/group
+
+and we can also use :::::::::: grep username /etc/passwd
+
+Change the username (`-l` or `--login`):
+
+#sudo usermod -l newname oldname
+
+now i m going to go forward the ssh :
+
+first to check about any service : in my example i ll do it for ssh :
+# sudo systemctl status ssh
+
+after it you need to modify from the file /etc/ssh/sshd_config to give access to the port 4242 and to not give the permission to the root ;
+
+but lets install it : syu
+the ssh get installed this way : # sudo apt install ssh
+
+after i check it up with : sudo systemctl status ssh
+
+### **`enabled`**
+
+- **Meaning**:
+    
+    The service is set to start automatically during the system boot process.
+    
+
+### **2. `disabled`**
+
+- **Meaning**:
+    
+    The service will not start automatically during system boot, he service will not start unless manually activated.
+    
+
+### **1. `active`**
+
+- **Meaning**:The service is currently running and operationa
+
+### **2.`inactive` (or "deactivated")**
+
+- **Meaning**:The service is not running. It is either stopped manually or has not been started yet.
+
+when using useradd : without password .
+
+using adduser : with a password .
+
+for now i m gonna add the FIREWALL:
+
+WHAT IS THE FIREWALL :::
+
+A firewall is software that controls incoming and outgoing network traffic based on predetermined security rules. It essentially acts as a barrier between a trusted network .
+
+Here are the key things firewalls do:
+
+Traffic filtering / Access control / Logging and monitoring
+
+so first i install the firewall (apt install firewall ) and then i check if the ufw (uncomplicated firewall) is active or inactive by ## : ufw status or much better command : sudo service ufw status ;
+
+if you get inactive which is what i get i should 
+
+activate it with :: ##sudo ufw enable then i check it with # sudo ufw status 
+
+!!!! ONE IMPORTANT THING TO ACTIVATE AND CHANGE THE PORT :: 4242 BY THIS PATH : sudo nano /etc/ssh/sshd_config
+
+TO ADD NEW UFW to a specific port  ::::
+
+sudo ufw allow 4242/tcp (This allows incoming TCP connections on port 4242.)
+
+to remove a port :: sudo ufw delete allow 8080;
+
+ip hostname : hostname -I (it gives you the ip address of your machine);
+
+to modify hostname you have to do two things :::: 
+
+#sudo hostnamectl set-hostname <new_hostname> and go to the file :: vi /etc/hosts .
+
+TCP :: protocol that provides reliable, ordered, and error-checked delivery of data between applications running on computers connected via an IP network.
+When you send data, TCP breaks it into smaller pieces called "segments”. 
+
+Each segment gets a sequence number so they can be put back together in the right order.
+
+The TCP segments are then packaged into IP packets, These packets may take different routes through the network to reach the destination to be faster .
+
+If any segment is missing, TCP requests a retransmission.
+
+- **IPv4 (Internet Protocol version 4)**:
+    - Format: `xxx.xxx.xxx.xxx` (e.g., `192.168.1.1`)
+    - Uses 32-bit addresses, allowing approximately 4.3 billion unique addresses.
+    - Commonly used, but its address space is almost exhausted.
+- **IPv6 (Internet Protocol version 6)**:
+    - Format: `xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx` (e.g., `2001:0db8:85a3:0000:0000:8a2e:0370:7334`)
+    - Uses 128-bit addresses, allowing a vast number of unique addresses.
+    - Developed to address IPv4 exhaustion and offers enhanced features like better routing and built-in security
+
+for the password policy i work on these :
+firstly i use the following path to modify it nano /etc/login.defs
+
+Your password has to expire every 30 days. MAXDAYS 30.
+• The minimum number of days allowed before the modification of a password will be set to 2. MINDAYS 2.
+• The user has to receive a warning message 7 days before their password expires PASS_WARN_AGE 7.
+
+after changing all there policies you have to change it for the root and the old user (ameskine).
+
+using :: chage -l :: that show you :: the options 
+for root :: sudo chage -M 30 -m 2 -W 7 root
+
+for user :: sudo chage -M 30 -m 2 -W 7  ameskine
+
+to check if the policy are applicable on the user and root to :
+
+chage -l ameskine
+
+chage -l root
+
+THEN I Install password quality checking library :::
+
+BY : apt -y install libpam-pwquality ::: this library helps enforce strong password policies by integrating with PAM (Pluggable Authentication Module) to validate passwords against specific quality requirements.
+
+-y :: (short for `--yes`) that automatically answers "yes".
+
+AFTER Installing it USE THE FOLLOWING PATH :: vi /etc/security/pwquality.conf to check the rules to add and modify  .
+
+The `sudoers` file is a configuration file that specifies user and group permissions for using the `sudo` command in Unix-like operating systems.
+
+to edit on this file i use “”” visudo “””” 
+
+then i use defaults :
+
+requiretty :: The TTY mode has to be enabled for security reasons.
+
+to secure_path 
+
+to password 3 times (while a user using sudo) with : passwd_tries=3 / 
+
+passprompt : error to appear when the message is wrong with (badpass_message).
+
+- `logfile="/var/log/sudo/sudo.log"`: Specifies the log file where sudo logs will be saved.
+- `log_input`: Enables logging (save everything used by users )of user inputs during sudo sessions.
+- `log_output`: Captures command outputs during sudo sessions.
+
+Defaults        logfile="/var/log/sudo/sudo.log"
+Defaults        log_input, log_output
+in here one important thing is ::
+
+you have to create the directory : sudo using mkdir : sudo 
+
+after it you have to create the file : sudo using touch var.log
+
+CRON::
+
+**Cron** is a time-based job scheduler in Unix-like operating systems. It allows you to automate the execution of commands or scripts at specified times or intervals.
+
+and i do it this way ::
+
+sudo crontab -e : by writing this : @reboot while true; do sleep 600 && /home/ameskine/monitoring.sh; done
