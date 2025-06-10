@@ -142,7 +142,7 @@ benefits ::::
 
 ![Screenshot](image/Screenshot%20from%202024-12-25%2015-47-52.png)
 
-![Screenshot from 2024-12-25 15-44-55.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/eb599de3-bb59-4f5b-a715-5575225afc60/Screenshot_from_2024-12-25_15-44-55.png)
+![Screenshot](image/Screenshot%20from%202024-12-25%2015-44-55.png)
 
 ---
 
