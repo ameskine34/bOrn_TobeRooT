@@ -93,7 +93,7 @@ Type-2 hypervisor runs on top of supported operating systems and uses the OS’s
 - Lower performance than with Type-1, because of resource sharing with other applications and using hardware resources via the host OS.
 - **Less secure and stable**. Crash of any other application may crash host OS.
 
-![Screenshot](image/Screenshot%20from%202024-12-25%2015-47-52.png)
+![Screenshot](image/Screenshot%20from%202024-12-26%2009-36-24.png)
 
 **BARE-METAL HYPERVISOR :**
 
