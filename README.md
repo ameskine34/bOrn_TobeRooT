@@ -1,5 +1,5 @@
 # bOrn_TobeRooT
-# basic
+# basics
 
 VIRTUALIZATION ::
 
