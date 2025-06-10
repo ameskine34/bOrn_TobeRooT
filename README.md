@@ -93,15 +93,13 @@ Type-2 hypervisor runs on top of supported operating systems and uses the OS’s
 - Lower performance than with Type-1, because of resource sharing with other applications and using hardware resources via the host OS.
 - **Less secure and stable**. Crash of any other application may crash host OS.
 
-![Screenshot from 2024-12-26 09-36-24.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/bcb0e826-a935-489a-ab45-d8376829188b/Screenshot_from_2024-12-26_09-36-24.png)
+![Screenshot](image/Screenshot%20from%202024-12-25%2015-47-52.png)
 
 **BARE-METAL HYPERVISOR :**
 
 bare-metal (Type 1) hypervisor runs directly on the hardware and acts as a lightweight operating system (how : Directly controlling hardware resources (CPU, memory, I/O) / Scheduling and allocating these resources to guest operating systems ). allows multiple guest operating systems to run independently on the same physical machine.
 
 **kernel : is a computer program (**set of instructions written by assembly and c language for computer to execute**) at the core of a the computer’s operating system has control over everything in the system (software and hardware).**
-
-![Screenshot from 2024-12-23 10-42-05.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/2051db82-2538-4143-8f44-fda92f8d873d/Screenshot_from_2024-12-23_10-42-05.png)
 
 **DEBIAN** :
 
@@ -142,7 +140,7 @@ benefits ::::
 - **Snapshots:** Useful for backups or testing system changes.
 - **Efficient storage utilization:** Combine multiple storage devices into a single logical group.
 
-![Screenshot from 2024-12-25 15-47-52.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/e01cdc55-d972-4610-bd40-ef50897321bd/Screenshot_from_2024-12-25_15-47-52.png)
+![Screenshot](image/Screenshot%20from%202024-12-25%2015-47-52.png)
 
 ![Screenshot from 2024-12-25 15-44-55.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/86fd731c-6f91-46ba-94e4-8608b03510b4/eb599de3-bb59-4f5b-a715-5575225afc60/Screenshot_from_2024-12-25_15-44-55.png)
 
