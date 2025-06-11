@@ -325,57 +325,65 @@ Your password has to expire every 30 days. MAXDAYS 30.
 • The minimum number of days allowed before the modification of a password will be set to 2. MINDAYS 2.
 • The user has to receive a warning message 7 days before their password expires PASS_WARN_AGE 7.
 
-after changing all there policies you have to change it for the root and the old user (ameskine).
-
-using :: chage -l :: that show you :: the options 
-for root :: sudo chage -M 30 -m 2 -W 7 root
-
-for user :: sudo chage -M 30 -m 2 -W 7  ameskine
-
-to check if the policy are applicable on the user and root to :
-
-chage -l ameskine
+** Password Expiration Policies
+After configuring the system-wide password policies, I applied them individually to the root user and the regular user using the chage command:
 
 chage -l root
+chage -l ameskine
 
-THEN I Install password quality checking library :::
+# Apply password policies
+sudo chage -M 30 -m 2 -W 7 root
+sudo chage -M 30 -m 2 -W 7 ameskine
+-M 30: Set maximum password age to 30 days.
 
-BY : apt -y install libpam-pwquality ::: this library helps enforce strong password policies by integrating with PAM (Pluggable Authentication Module) to validate passwords against specific quality requirements.
+-m 2: Set minimum password age to 2 days.
 
--y :: (short for `--yes`) that automatically answers "yes".
+-W 7: Warn the user 7 days before password expiration.
 
-AFTER Installing it USE THE FOLLOWING PATH :: vi /etc/security/pwquality.conf to check the rules to add and modify  .
+** Password Quality Enforcement
+I installed the password quality checking library to enforce strong password rules:
 
-The `sudoers` file is a configuration file that specifies user and group permissions for using the `sudo` command in Unix-like operating systems.
+sudo apt -y install libpam-pwquality
+The -y flag automatically answers "yes" to all prompts.
 
-to edit on this file i use “”” visudo “””” 
+This library integrates with PAM (Pluggable Authentication Modules) to validate passwords based on defined quality rules.
 
-then i use defaults :
+Configuration file:
 
-requiretty :: The TTY mode has to be enabled for security reasons.
+vi /etc/security/pwquality.conf
+Here, I modified rules like minlen, dcredit, ucredit, etc., to enforce strong passwords.
 
-to secure_path 
+** Sudoers Configuration
+The sudoers file defines permissions and behaviors for the sudo command. I edited it safely using:
 
-to password 3 times (while a user using sudo) with : passwd_tries=3 / 
+visudo
+I added the following options to enhance security and auditing:
 
-passprompt : error to appear when the message is wrong with (badpass_message).
-
-- `logfile="/var/log/sudo/sudo.log"`: Specifies the log file where sudo logs will be saved.
-- `log_input`: Enables logging (save everything used by users )of user inputs during sudo sessions.
-- `log_output`: Captures command outputs during sudo sessions.
-
+Defaults        requiretty
+Defaults        passwd_tries=3
+Defaults        badpass_message="Wrong password. Please try again."
 Defaults        logfile="/var/log/sudo/sudo.log"
 Defaults        log_input, log_output
-in here one important thing is ::
 
-you have to create the directory : sudo using mkdir : sudo 
+requiretty: Requires users to run sudo from a terminal.
 
-after it you have to create the file : sudo using touch var.log
+passwd_tries=3: Limits password entry attempts.
 
-CRON::
+logfile: Specifies where to store sudo logs.
 
-**Cron** is a time-based job scheduler in Unix-like operating systems. It allows you to automate the execution of commands or scripts at specified times or intervals.
+log_input, log_output: Captures all user inputs and outputs during sudo sessions.
 
-and i do it this way ::
+Important: Ensure the logging path exists:
 
-sudo crontab -e : by writing this : @reboot while true; do sleep 600 && /home/ameskine/monitoring.sh; done
+sudo mkdir -p /var/log/sudo
+sudo touch /var/log/sudo/sudo.log
+** Cron Job Setup
+Cron is a time-based job scheduler used to automate repetitive tasks.
+
+I created a cron job that launches a monitoring script every 10 minutes after each system reboot:
+
+sudo crontab -e
+Inside the crontab file, I added:
+
+@reboot while true; do sleep 600 && /home/ameskine/monitoring.sh; done
+This ensures the script is executed every 10 minutes continuously after each reboot.
